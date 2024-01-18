@@ -1,0 +1,17 @@
+version: "3"
+services:
+  database:
+    build:
+      context: ./database
+    environment:
+      MYSQL_ROOT_PASSWORD: movie123
+    ports:
+      - "3306:3306"
+
+  webapp:
+    build:
+      context: ./webapp
+    ports:
+      - "80:80"
+    depends_on:
+      - database
